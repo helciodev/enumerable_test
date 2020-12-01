@@ -92,10 +92,10 @@ describe Enumerable do
 
   describe '[my_any tests] >'.bold.blue do
     it 'my_any no-block.' do
-      expect( arr_in.my_any? ).to eq( arr_in.any? )
+      expect(arr_in.my_any?).to eq(arr_in.any?)
     end
     it 'my_any even value.' do
-      expect( arr_in.my_any?(&:even?)).to eq( arr_in.any?(&:even?))
+      expect(arr_in.my_any?(&:even?)).to eq(arr_in.any?(&:even?))
     end
     it 'my_any block parsing.' do
       expect(arr_in.my_any? { |n| n > 0 }).to eq(arr_in.any? { |n| n > 0 })
@@ -111,6 +111,36 @@ describe Enumerable do
     end
     it 'my_any regexp parsing.' do
       expect(regexp_in.my_any?(/d/)).to eq(regexp_in.any?(/d/))
+    end
+  end
+
+  describe '[my_none tests] >'.bold.blue do
+    it 'my_none no-block.' do
+      expect(arr_in.my_none?).to eq(arr_in.none?)
+    end
+
+    it 'my_none even value.' do
+      expect(arr_in.my_none?(&:even?)).to eq(arr_in.none?(&:even?))
+    end
+
+    it 'my_none block parsing.' do
+      expect(arr_in.my_none? { |n| n > 0 }).to eq(arr_in.none? { |n| n > 0 })
+    end
+
+    it 'my_none class parsing.' do
+      expect(arr_in.my_none?(Numeric)).to eq(arr_in.none?(Numeric))
+    end
+
+    it 'my_any sub-class parsing.' do
+      expect(arr_in.my_any?(Integer)).to eq(arr_in.any?(Integer))
+    end
+
+    it 'my_none range parsing.' do
+      expect(enum_in.my_none?(1)).to eq(enum_in.none?(1))
+    end
+
+    it 'my_none regexp parsing.' do
+      expect(regexp_in.my_none?(/d/)).to eq(regexp_in.none?(/d/))
     end
   end
 end
