@@ -89,4 +89,28 @@ describe Enumerable do
       expect(regexp_in.my_all?(/d/)).to eq(regexp_in.all?(/d/))
     end
   end
+
+  describe '[my_any tests] >'.bold.blue do
+    it 'my_any no-block.' do
+      expect( arr_in.my_any? ).to eq( arr_in.any? )
+    end
+    it 'my_any even value.' do
+      expect( arr_in.my_any?(&:even?)).to eq( arr_in.any?(&:even?))
+    end
+    it 'my_any block parsing.' do
+      expect( arr_in.my_any? {|n| n > 0} ).to eq( arr_in.any? {|n| n > 0} )
+    end
+    it 'my_any class parsing.' do
+      expect( arr_in.my_any?(Numeric)).to eq( arr_in.any?(Numeric))
+    end
+    it 'my_any sub-class parsing.' do
+      expect( arr_in.my_any?(Integer)).to eq( arr_in.any?(Integer))
+    end
+    it 'my_any range parsing.' do
+      expect( enum_in.my_any?(1)).to eq( enum_in.any?(1))
+    end
+    it 'my_any regexp parsing.' do
+      expect( regexp_in.my_any?(/d/)).to eq( regexp_in.any?(/d/))
+    end
+  end
 end
