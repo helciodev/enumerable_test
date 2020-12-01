@@ -1,5 +1,3 @@
-# rubocop:disable Style/FrozenStringLiteralComment
-
 require 'rspec'
 require '../enumerable_methods'
 require 'colorize'
