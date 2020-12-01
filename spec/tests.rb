@@ -173,11 +173,10 @@ describe Enumerable do
     end
 
     it 'my_map inversion.' do
-      expect(regexp_in.my_map(&:!)).to eq(regexp_in.map(&:!))
-
+      expect(bool_in.my_map(&:!)).to eq(bool_in.map(&:!))
     end
   end
-  
+
   describe '[my_inject tests] >'.bold.blue do
     it 'my_inject block parsing.' do
       expect(arr_in.my_inject { |i, j| i + j }).to eq(arr_in.inject { |i, j| i + j })
@@ -194,6 +193,5 @@ describe Enumerable do
     it 'my_inject range & block parsing.' do
       expect(enum_in.my_inject(4) { |prod, n| prod * n }).to eq(enum_in.inject(4) { |prod, n| prod * n })
     end
-
   end
 end
