@@ -132,7 +132,7 @@ describe Enumerable do
     end
 
     it 'my_any sub-class parsing.' do
-      expect(arr_in.my_any?(Integer)).to eq(arr_in.any?(Integer))
+      expect(arr_in.my_none?(Integer)).to eq(arr_in.my_none?(Integer))
     end
 
     it 'my_none range parsing.' do
@@ -141,6 +141,21 @@ describe Enumerable do
 
     it 'my_none regexp parsing.' do
       expect(regexp_in.my_none?(/d/)).to eq(regexp_in.none?(/d/))
+    end
+  end
+
+  describe '[my_count tests] >'.bold.blue do
+    it 'my_count no-block.' do
+      expect(arr_in.my_count).to eq(arr_in.count)
+    end
+    it 'my_count even value.' do
+      expect(arr_in.my_count(&:even?)).to eq(arr_in.count(&:even?))
+    end
+    it 'my_count block parsing.' do
+      expect(regexp_in.my_count { |s| s == s.upcase }).to eq(regexp_in.count { |s| s == s.upcase })
+    end
+    it 'my_count range parsing.' do
+      expect(enum_in.my_count(1)).to eq(enum_in.count(1))
     end
   end
 end
