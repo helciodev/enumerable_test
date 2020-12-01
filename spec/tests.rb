@@ -158,4 +158,22 @@ describe Enumerable do
       expect(enum_in.my_count(1)).to eq(enum_in.count(1))
     end
   end
+
+  describe '[my_map tests] >'.bold.blue do
+    it 'my_map even value.' do
+      expect(arr_in.my_map(&:even?)).to eq(arr_in.map(&:even?))
+    end
+
+    it 'my_map block parsing.' do
+      expect(regexp_in.my_map { |s| s == s.upcase }).to eq(regexp_in.map { |s| s == s.upcase })
+    end
+
+    it 'my_map block parsing insertion.' do
+      expect(regexp_in.my_map { |word| "#{word}?" }).to eq(regexp_in.map { |word| "#{word}?" })
+    end
+
+    it 'my_map inversion.' do
+      expect(regexp_in.my_map(&:!)).to eq(regexp_in.map(&:!))
+    end
+  end
 end
