@@ -98,7 +98,7 @@ describe Enumerable do
       expect( arr_in.my_any?(&:even?)).to eq( arr_in.any?(&:even?))
     end
     it 'my_any block parsing.' do
-      expect(arr_in.my_any? { |n| n > 0}).to eq(arr_in.any? { |n| n > 0})
+      expect(arr_in.my_any? { |n| n > 0 }).to eq(arr_in.any? { |n| n > 0 })
     end
     it 'my_any class parsing.' do
       expect(arr_in.my_any?(Numeric)).to eq(arr_in.any?(Numeric))
