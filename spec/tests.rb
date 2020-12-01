@@ -9,10 +9,10 @@ describe Enumerable do
     bool_in = [true, false, false, true]
     regexp_in = %w[dOg door rod blade]
 
-    describe "#my_each" do
-    it "returns all the elements in an Array" do
-       expect(arr_in.my_each { |e| e }).to  eql( arr_in.each { |e| e } )
-    end
+        describe "#my_each" do
+        it "returns all the elements in an Array" do
+        expect(arr_in.my_each { |e| e }).to  eql( arr_in.each { |e| e } )
+        end
     end
 end
 
