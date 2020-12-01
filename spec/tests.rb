@@ -22,4 +22,22 @@ describe Enumerable do
       expect(enum_in.my_each { |e| }).to eql(enum_in.each { |e| })
     end
   end
+
+  describe '[my_each_with_index] >'.bold.blue do
+
+    it 'Returns all the elements in an Array' do
+      expect(arr_in.my_each_with_index { |i, j| }).to eql(arr_in.each_with_index { |i, j| })
+    end
+
+    block = proc { |elem, idx| puts "#{elem} : #{idx}" }
+    it 'my_each block parsing test.' do
+      expect { print(arr_in.my_each_with_index(&block)) }.to output(print(arr_in.each_with_index(&block))).to_stdout
+    end
+
+    my_each_with_index_output = ''
+    block1 = proc { |num, idx| my_each_with_index_output += "Num: #{num}, idx: #{idx}\n" }
+    it 'my_each range & block parsing test.' do
+      expect { print(arr_in.my_each_with_index(&block1)) }.to output(print(arr_in.each_with_index(&block1))).to_stdout
+    end
+  end
 end
