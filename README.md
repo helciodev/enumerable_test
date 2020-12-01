@@ -54,7 +54,6 @@ This project is [MIT](https://github.com/helciodev/enumerable_test/blob/developm
 - Twitter: [@twitterhandle](https://twitter.com/bashforge)
 - LinkedIn: [@linkedIn](https://www.linkedin.com/in/muhammad-adeel-danish/)
 
-
 ## Acknowledgments
 
 - [Ruby-doc](https://ruby-doc.org/core-2.6.5)
