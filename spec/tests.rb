@@ -39,6 +39,7 @@ describe Enumerable do
       expect { print(arr_in.my_each_with_index(&block1)) }.to output(print(arr_in.each_with_index(&block1))).to_stdout
     end
   end
+
   describe '[my_select] >'.bold.blue do
     it 'Returns all the elements that are even in an array' do
       expect(arr_in.my_select(&:even?)).to eql(arr_in.select(&:even?))
@@ -56,4 +57,36 @@ describe Enumerable do
       expect(enum_in.my_select(&:odd?)).to eql(enum_in.select(&:odd?))
     end
   end
+
+  describe '[my_all tests] >'.bold.blue do
+
+    it 'my_all no-block.' do
+      expect( arr_in.my_all? ).to eq( arr_in.all? )
+    end
+
+    it 'my_all even value.' do
+      expect( arr_in.my_all?(&:even?)).to eq( arr_in.all?(&:even?))
+    end
+    
+    it 'my_all block parsing.' do
+      expect( arr_in.my_all? {|n| n > 0} ).to eq( arr_in.all? {|n| n > 0} )
+    end
+
+    it 'my_all class parsing.' do
+      expect( arr_in.my_all?(Numeric)).to eq( arr_in.all?(Numeric))
+    end
+
+    it 'my_all sub-class parsing.' do
+      expect( arr_in.my_all?(Integer)).to eq( arr_in.all?(Integer))
+    end
+ 
+    it 'my_all range parsing.' do
+      expect( enum_in.my_all?(1)).to eq( enum_in.all?(1))
+    end
+
+    it 'my_all regexp parsing.' do
+      expect( regexp_in.my_all?(/d/)).to eq( regexp_in.all?(/d/))
+    end
+  end
+
 end
