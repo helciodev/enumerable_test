@@ -1,4 +1,5 @@
-#my_each test
+# frozen_string_literal: true
+
 require 'rspec'
 require '../enumerable_methods'
 require 'colorize'
@@ -14,8 +15,9 @@ describe Enumerable do
       expect(arr_in.my_each { |e| }).to eql(arr_in.each { |e| })
     end
 
+    block = proc { |i| i + 1 }
     it 'my_each block parsing test.' do
-      expect { print(arr_in.my_each { |i| i + 1 }) }.to output(print(arr_in.each { |i| i + 1 })).to_stdout
+      expect { print(arr_in.my_each(&block)) }.to output(print(arr_in.each(&block))).to_stdout
     end
 
     it 'my_each range parsing test.' do
@@ -59,34 +61,32 @@ describe Enumerable do
   end
 
   describe '[my_all tests] >'.bold.blue do
-
     it 'my_all no-block.' do
-      expect( arr_in.my_all? ).to eq( arr_in.all? )
+      expect(arr_in.my_all?).to eq(arr_in.all?)
     end
 
     it 'my_all even value.' do
-      expect( arr_in.my_all?(&:even?)).to eq( arr_in.all?(&:even?))
+      expect(arr_in.my_all?(&:even?)).to eq(arr_in.all?(&:even?))
     end
-    
+
     it 'my_all block parsing.' do
-      expect( arr_in.my_all? {|n| n > 0} ).to eq( arr_in.all? {|n| n > 0} )
+      expect(arr_in.my_all? { |n| n > 0 }).to eq(arr_in.all? { |n| n > 0 })
     end
 
     it 'my_all class parsing.' do
-      expect( arr_in.my_all?(Numeric)).to eq( arr_in.all?(Numeric))
+      expect(arr_in.my_all?(Numeric)).to eq(arr_in.all?(Numeric))
     end
 
     it 'my_all sub-class parsing.' do
-      expect( arr_in.my_all?(Integer)).to eq( arr_in.all?(Integer))
+      expect(arr_in.my_all?(Integer)).to eq(arr_in.all?(Integer))
     end
- 
+
     it 'my_all range parsing.' do
-      expect( enum_in.my_all?(1)).to eq( enum_in.all?(1))
+      expect(enum_in.my_all?(1)).to eq(enum_in.all?(1))
     end
 
     it 'my_all regexp parsing.' do
-      expect( regexp_in.my_all?(/d/)).to eq( regexp_in.all?(/d/))
+      expect(regexp_in.my_all?(/d/)).to eq(regexp_in.all?(/d/))
     end
   end
-
 end
