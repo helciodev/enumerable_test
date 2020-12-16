@@ -20,7 +20,7 @@ To get a local copy up and running follow these simple steps.
 
 2. Copy and paste the following code into the Terminal:
 
-   `git@github.com:helciodev/enumerable_test.git`
+  `git clone git@github.com:helciodev/enumerable_test.git`
 
 3. Press Enter.
 
