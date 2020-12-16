@@ -24,9 +24,8 @@ To get a local copy up and running follow these simple steps.
 
 3. Press Enter.
 
-4. Once the repository has been cloned, navigate inside the repository and type: bin/main This will run the game and you will be able to play it using the terminal.
+4. Once the repository has been cloned, navigate inside the repository and type: rspec/spec/tests.rb and press enter to run tests.
 
-5. Enjoy
 
 ## Contributing
 
